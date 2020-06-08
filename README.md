@@ -11,7 +11,7 @@ Usage is very simple. You just need to provide a PDF file.
 The outputs will be `RESULT.mid` in the same directory, and MusicXML files for each page in `musicxml/` (these can be opened with software such as MuseScore or Finale).
 
 ## Setting up
-All dependencies (p2mp OMR, MIDISox for Perl) are provided in the repository, apart from `pdftk`.
+All dependencies (p2mp OMR, MIDISox for Perl) are provided in the repository, apart from `pdftk`. Optionally install `qpdf` if you are dealing with encrypted PDFs. Optionally provide MuseScore to generate MIDI files (typically this outputs a smaller size MIDI file).
 
 ```bash
 git clone "https://github.com/kaisubr/pdf-omr-pmerge.git"
@@ -19,12 +19,21 @@ sudo apt-get install "pdftk"
 chmod +x pdftomusicpro-1.7.1d.0.run
 ./pdftomusicpro-1.7.1d.0.run
 p2mp 
-# You may kill p2mp if all steps run successfully.
+# You may kill p2mp if all seps run successfully.
+
+# Install qpdf, optional
+sudo apt-get install qpdf 
+
+# Provide MuseScore, optional
+dir = $PWD
+cd my/musescore/directory
+cp "MuseScore-3.4.2-x86_64.AppImage" "$dir/MuseScore-3.4.2-x86_64.AppImage"
+cd $dir
 ```
 
 ## Known issues and solutions
-* Password-protected PDFs (or) pdftk does not recognize encryption:
-     - They should be decrypted using qpdf. Edit the script to provide a password with `qpdf -password=<your-password> -decrypt input.pdf decrypted.pdf`
+* Password-protected PDFs:
+     - They can be decrypted using qpdf. Edit the script to provide a password with `qpdf -password=<password> -decrypt input.pdf decrypted.pdf`
 
 ## More stuff
 Please use this script for private use only, not commercial use.
