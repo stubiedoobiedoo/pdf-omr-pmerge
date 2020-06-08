@@ -3,7 +3,7 @@ echo "
 ---------- { Notice } ----------
 Please use this script for private use only, not commercial use.
 
-Dependencies: MidiSox (Perl, included and pre-compiled); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to PATH automatically); pdftk (typically pre-installed)
+Dependencies: MidiSox (Perl, included and pre-compiled); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed)
 
 Usage: ./pmerge.sh \"path/to/myfile.pdf\"
  
