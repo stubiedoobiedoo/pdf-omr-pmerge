@@ -3,7 +3,7 @@ echo "
 ---------- { Notice } ----------
 Please use this script for private use only, not commercial use.
 
-Dependencies: MidiSox (Perl, included and pre-compiled); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed)
+Dependencies: MidiSox (Perl, included and pre-compiled); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to PATH automatically); pdftk (typically pre-installed); xml_merge.py (included)
 
 Usage: ./pmerge.sh \"path/to/myfile.pdf\"
  
@@ -15,6 +15,7 @@ shelldir=$PWD
 file=$(basename "${path}") # abc.pdf
 dir=$(dirname "${path}") # /path/to/stuff/ 
 cd "$dir"
+mkdir musicxml
 echo "Directory $PWD"
 pages=$(pdftk "$file" dump_data | grep NumberOfPages | sed 's/[^0-9]*//')
 echo "[INFO]: Found $pages pages"
@@ -22,8 +23,9 @@ for ((i = 1 ; i <= $pages ; i++)); do
     echo "----------[ Parsing page $i of $pages ]----------"
     # Generate page
     pdftk "$file" cat "$i" output "out$i.pdf"
-    # Create MID file (https://www.myriad-online.com/resources/docs/pdftomusicpro/english/command.htm)
+    # Create MID file (https://www.myriad-online.com/resources/docs/pdftomusicpro/english/command.htm) and XML (Music XML) files
     p2mp "out$i.pdf" -format MID -pathdest "$PWD" >> log.txt
+    p2mp "out$i.pdf" -format XML -pathdest "$PWD/musicxml/" >> log.txt
 done
 count=$((pages))
 
@@ -34,5 +36,5 @@ midarr=( $(printf 'out%d.mid\n' $(seq 1 $pages)) )
 
 echo "----------[ Cleanup ]----------"
 # Cleanup
-rm -rf out*.pdf
-rm -rf out*.mid
+rm -rvf out*.pdf
+rm -rvf out*.mid
