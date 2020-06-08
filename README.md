@@ -22,6 +22,10 @@ p2mp
 # You may kill p2mp if all steps run successfully.
 ```
 
+## Known issues and solutions
+* Password-protected PDFs (or) pdftk does not recognize encryption:
+     - They should be decrypted using qpdf. Edit the script to provide a password with `qpdf -password=<your-password> -decrypt input.pdf decrypted.pdf`
+
 ## More stuff
 Please use this script for private use only, not commercial use.
 
