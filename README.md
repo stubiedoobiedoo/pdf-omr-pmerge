@@ -1,11 +1,14 @@
 # pdf-omr-pmerge
-Convert PDF sheet music to a playable MIDI file. The script is intended to be a super quick and easy tool, see `Setting up` below.
+Convert PDF sheet music to a playable MIDI file, and MusicXML for each page. The script is intended to be a super quick and easy tool, see `Usage` below.
 
 ## Usage
-Usage is very simple. You just need to provide a PDF file. The output will be "`RESULT.mid`" in the same directory.
+Usage is very simple. You just need to provide a PDF file. 
+
 ```bash
 ./pmerge.sh "path/to/myfile.pdf"
 ```
+
+The outputs will be `RESULT.mid` in the same directory, and MusicXML files for each page in `musicxml/` (these can be opened with software such as MuseScore or Finale).
 
 ## Setting up
 All dependencies (p2mp OMR, MIDISox for Perl) are provided in the repository, apart from `pdftk`.
