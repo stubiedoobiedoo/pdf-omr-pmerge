@@ -19,7 +19,15 @@ sudo apt-get install "pdftk"
 chmod +x pdftomusicpro-1.7.1d.0.run
 ./pdftomusicpro-1.7.1d.0.run
 p2mp 
-# You may kill p2mp if all seps run successfully.
+# You may kill p2mp if all steps run successfully.
+
+# Install module
+cd MIDI-Perl-0.83
+perl Makefile.PL
+make
+make test
+sudo make install
+cd ..
 
 # Install qpdf, optional
 sudo apt-get install qpdf 
