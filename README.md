@@ -18,8 +18,7 @@ git clone "https://github.com/kaisubr/pdf-omr-pmerge.git"
 sudo apt-get install "pdftk"
 chmod +x pdftomusicpro-1.7.1d.0.run
 ./pdftomusicpro-1.7.1d.0.run
-p2mp 
-# You may kill p2mp if all steps run successfully.
+which p2mp
 
 # Install module
 cd MIDI-Perl-0.83
@@ -46,6 +45,6 @@ cd $dir
 ## More stuff
 Please use this script for private use only, not commercial use.
 
-Dependencies: MidiSox (Perl, included and pre-compiled); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to /usr/bin automatically); pdftk (typically pre-installed)
+Dependencies: MidiSox (Perl); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to /usr/bin automatically); pdftk (typically pre-installed)
  
-Debug mode: Edit the first line of this file to: #!/bin/bash -x . You can also disable cleanup by removing the last few lines of this script.
+Debug mode: Edit the first line of this file to: `#!/bin/bash -x`. You can also disable cleanup by removing the last few lines of this script.
