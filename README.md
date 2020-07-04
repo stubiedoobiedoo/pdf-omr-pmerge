@@ -1,5 +1,5 @@
 # pdf-omr-pmerge
-Listen to PDF sheet music by converting it to a playable MIDI, MusicXML, or Musescore MSCZ file. The script is intended to be a super quick and easy tool, see `Usage` [below](#usage). Thanks to dependencies [listed below](#more-stuff).
+Listen to PDF sheet music by converting it to a playable MIDI, MusicXML, or Musescore MSCZ file per page. The script is intended to be a super quick and easy tool, see `Usage` [below](#usage). Thanks to dependencies [listed below](#more-stuff).
 <p align="center">
   <img src="media/sample_out.png" style="text-align: center" />
   </br>
