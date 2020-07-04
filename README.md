@@ -54,3 +54,5 @@ Please use this script for private use only, not commercial or third-party use, 
 Thanks to dependencies: MidiSox (Perl, [readme](https://github.com/kaisubr/pdf-omr-pmerge/blob/master/MIDI-Perl-0.83/README)); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to /usr/bin automatically); pdftk (typically pre-installed)
  
 Debug mode: Edit the first line of this file to: `#!/bin/bash -x`. You can also disable cleanup by removing the last few lines of this script.
+
+<!-- cd musicxml && clear && echo -e "\n\n\n\n\n" && ls -1 && cd .. && ls | grep "mid" && echo -e "\n\n\n\n\n\n\n\n" -->
