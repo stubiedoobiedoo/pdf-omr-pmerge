@@ -1,9 +1,9 @@
 # pdf-omr-pmerge
 Listen to PDF sheet music by converting it to a playable MIDI or MusicXML file. The script is intended to be a super quick and easy tool, see `Usage` [below](#usage). Thanks to dependencies [listed below](#more-stuff).
 <p align="center">
-  <img src="sample_out.png" style="text-align: center" />
+  <img src="media/sample_out.png" style="text-align: center" />
   </br>
-  <i>Playable output extracted from original PDF file</i>
+  <i>Playable output extracted from original <a href="https://github.com/kaisubr/pdf-omr-pmerge/raw/master/media/original.pdf">PDF file</a></i>
 </p>
 
 ## Usage
