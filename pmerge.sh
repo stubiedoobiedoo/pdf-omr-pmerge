@@ -29,7 +29,7 @@ for ((i = 1 ; i <= $pages ; i++)); do
     # Create MID file (https://www.myriad-online.com/resources/docs/pdftomusicpro/english/command.htm) and XML (Music XML) files
     p2mp "out$i.pdf" -format MID -pathdest "$PWD" >> log.txt # $PWD is same as $dir
     p2mp "out$i.pdf" -format XML -pathdest "$PWD/musicxml/" >> log.txt
-    "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$PWD/musicxml/out$i.mid" "$PWD/musicxml/out1.xml"
+    "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$PWD/musicxml/out$i.mid" "$PWD/musicxml/out$i.xml"
 done
 count=$((pages))
 
