@@ -15,20 +15,27 @@ Usage is very simple. You just need to provide a PDF file.
 
 The outputs will be a complete `result.mid` and `result.mscx` in the same directory (these can be opened with software such as MuseScore or Finale). MuseScore is provided in the binary release.
 
-## Setting up
-All dependencies are provided in the release, apart from `pdftk`. Optionally install `qpdf` if you are dealing with encrypted PDFs. Optionally provide MuseScore to generate MIDI files (I've found that this typically outputs a smaller size MIDI file).
+## Releases
+Download from the release pane, and run `install.sh`:
+```bash
+./install.sh
+```
+
+## Building from source
+Dependencies are provided, apart from `pdftk`. Optionally install `qpdf` if you are dealing with encrypted PDFs.
 
 ```bash
 git clone "https://github.com/kaisubr/pdf-omr-pmerge.git"
-sudo apt-get install "pdftk"
+sudo apt-get install pdftk
 chmod +x pdftomusicpro-1.7.1d.0.run
 ./pdftomusicpro-1.7.1d.0.run
 which p2mp
 
+# MuseScore
+wget "https://github.com/musescore/MuseScore/releases/download/v3.4.2/MuseScore-3.4.2-x86_64.AppImage"
+
 # Install qpdf, optional
 sudo apt-get install qpdf 
-
-# MuseScore included in binary release
 ```
 
 ## Known issues and solutions
