@@ -5,7 +5,7 @@ Please use this script for private use only, not commercial use.
 
 Dependencies - most are just for convenience and aren't necessary for basic functionality: 
 
-MidiSox (Perl, included and pre-compiled); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed); xml_merge.py (included); MuseScore 3 (optional, included)
+mscxcat (written by me, included, required); MuseScore 3 (not included, required); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed)
 
 Usage: ./pmerge.sh \"path/to/myfile.pdf\"
  
@@ -27,16 +27,11 @@ for ((i = 1 ; i <= $pages ; i++)); do
     # Generate page
     pdftk "decrypted.pdf" cat "$i" output "out$i.pdf"
     # Create MID file (https://www.myriad-online.com/resources/docs/pdftomusicpro/english/command.htm) and XML (Music XML) files
-    p2mp "out$i.pdf" -format MID -pathdest "$PWD" >> log.txt # $PWD is same as $dir
+    # p2mp "out$i.pdf" -format MID -pathdest "$PWD" >> log.txt # $PWD is same as $dir
     p2mp "out$i.pdf" -format XML -pathdest "$PWD/musicxml/" >> log.txt
-    "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$PWD/musicxml/out$i.mid" "$PWD/musicxml/out$i.xml"
+    "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$PWD/musicxml/out$i.mscx" "$PWD/musicxml/out$i.xml"
 done
 count=$((pages))
-
-midarr=( $(printf 'out%d.mid\n' $(seq 1 $pages)) )
-
-# Combine p2mp's midi files
-"$shelldir/midisox_pl.pl" "${midarr[@]}" "RESULT.mid"
 
 echo "----------[ Cleanup p2mp ]----------"
 # Cleanup temp pdf & individual mid
@@ -44,11 +39,13 @@ rm -rvf out*.pdf
 rm -rvf decrypted.pdf
 rm -rvf out*.mid
 
+# Combine musescore's mscx files
 cd musicxml
-msmidarr=( $(printf 'out%d.mid\n' $(seq 1 $pages)) )
+mscxarr=( $(printf 'out%d.mscx\n' $(seq 1 $pages)) )
+python "$shelldir/mxcat.py" "${mscxarr[@]}" > "$dir/result.mscx"
 
-# Combine musescore's midi files
-"$shelldir/midisox_pl.pl" "${midarr[@]}" "$dir/RESULT_MSCORE.mid"
+# Generate high-quality MuseScore midi
+"$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result.mid" "$dir/result.mscx"
 
 echo "----------[ Cleanup mscore3 ]----------"
 # Cleanup individual mid, but must keep XML files!
