@@ -43,11 +43,15 @@ echo "----------[ Cleanup p2mp ]----------"
 rm -rvf out*.pdf
 rm -rvf decrypted.pdf
 rm -rvf out*.mid
+rm -rvf log.txt
 
 # Combine musescore's mscx files
 cd musicxml
 mscxarr=( $(printf 'out%d.mscx\n' $(seq 1 $pages)) )
 python "$shelldir/mxcat.py" "${mscxarr[@]}" > "$dir/result.mscx"
+
+# Convert final mscx to a compressed format
+"$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result_compressed.mscz" "$dir/result.mscx"
 
 # Generate high-quality MuseScore midi
 "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result.mid" "$dir/result.mscx"
@@ -55,3 +59,5 @@ python "$shelldir/mxcat.py" "${mscxarr[@]}" > "$dir/result.mscx"
 echo "----------[ Cleanup mscore3 ]----------"
 # Cleanup individual mid, but must keep XML files!
 rm -rvf out*.mid
+
+# cd musicxml && clear && echo -e "\n\n\n\n\n" && ls -1 && cd .. && ls | grep "result" && echo -e "\n\n\n\n\n\n\n\n"
