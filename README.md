@@ -13,7 +13,7 @@ Usage is very simple. You just need to provide a PDF file.
 ./pmerge.sh "path/to/myfile.pdf"
 ```
 
-The outputs will be a complete `result.mid` and `result.mscx` in the same directory (these can be opened with software such as MuseScore or Finale). If needed, MuseScore 3.4.2 is provided in the binary release.
+The outputs will be a complete MIDI (`result.mid`, which can even be visualized with bemuse) and MuseScore (`result.mscx`, along with a compressed counterpart) in the same directory (these can be opened with software such as MuseScore or Finale). If needed, MuseScore 3.4.2 is provided in the binary release.
 
 <!--
 ## Releases
