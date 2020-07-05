@@ -1,6 +1,11 @@
 #!/bin/bash
 echo "
 ---------- { Notice } ----------
+
+ _  _ _  _  _ _  _ 
+|_)| | |(/_| (_|(/_     
+|             _|   
+
 Please use this script for private use only, not commercial use.
 
 Dependencies - most are just for convenience and aren't necessary for basic functionality: 
