@@ -15,11 +15,13 @@ Usage is very simple. You just need to provide a PDF file.
 
 The outputs will be a complete `result.mid` and `result.mscx` in the same directory (these can be opened with software such as MuseScore or Finale). MuseScore is provided in the binary release.
 
+<!--
 ## Releases
 Download from the release pane, and run `install.sh`:
 ```bash
 ./install.sh
 ```
+-->
 
 ## Building from source
 Dependencies are provided, apart from `pdftk`. Optionally install `qpdf` if you are dealing with encrypted PDFs.
