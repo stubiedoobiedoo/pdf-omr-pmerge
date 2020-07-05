@@ -10,7 +10,7 @@ Please use this script for private use only, not commercial use.
 
 Dependencies - most are just for convenience and aren't necessary for basic functionality: 
 
-mscxcat (written by me, included, required); MuseScore 3 (included in release, required); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed)
+mxcat (written by me, included, required); MuseScore 3 (included in release, required); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed)
 
 Usage: ./pmerge.sh \"path/to/myfile.pdf\"
  
