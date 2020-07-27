@@ -48,7 +48,7 @@ rm -rvf log.txt
 # Combine musescore's mscx files
 cd musicxml
 mscxarr=( $(printf 'out%d.mscx\n' $(seq 1 $pages)) )
-python "$shelldir/mxcat.py" "${mscxarr[@]}" > "$dir/result.mscx"
+python3 "$shelldir/mxcat.py" "${mscxarr[@]}" > "$dir/result.mscx"
 
 # Convert final mscx to a compressed format
 "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result_compressed.mscz" "$dir/result.mscx"
