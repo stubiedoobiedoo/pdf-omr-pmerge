@@ -1,5 +1,5 @@
 # pdf-omr-pmerge
-_Listen_ to PDF sheet music! This project helps convert PDFs to a playable .midi or a complete MuseScore .mscx file. The script is intended to be a super quick and easy tool, see `Usage` [below](#usage). At the core, it acts as a wrapper to PDF to Music Pro (p2mp), [listed below](#more-stuff) and it uses a custom script (mxcat) to merge MusicXML files.
+_Listen_ to PDF sheet music! This project helps convert PDFs to a playable .midi or a complete MuseScore .mscx file. The script is intended to be a super quick and easy tool, see `Usage` [below](#usage). At the core, it acts as a wrapper to Myriad's PDF to Music (p2mp), [listed below](#more-stuff), and it uses a custom script ([mxcat](https://github.com/kaisubr/mxcat)) to merge MusicXML files.
 <p align="center">
   <img src="media/sample_out.png" style="text-align: center" />
   </br>
