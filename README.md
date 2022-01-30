@@ -29,15 +29,16 @@ Dependencies are provided, apart from `pdftk`. Optionally install `qpdf` if you 
 ```bash
 git clone "https://github.com/kaisubr/pdf-omr-pmerge.git"
 sudo apt-get install pdftk
+sudo apt-get install qpdf # optional
 chmod +x pdftomusicpro-1.7.1d.0.run
 ./pdftomusicpro-1.7.1d.0.run
 which p2mp
 
 # MuseScore
-wget "https://github.com/musescore/MuseScore/releases/download/v3.4.2/MuseScore-3.4.2-x86_64.AppImage"
+wget -nc "https://github.com/musescore/MuseScore/releases/download/v3.4.2/MuseScore-3.4.2-x86_64.AppImage"
+chmod +x MuseScore-3.4.2-x86_64.AppImage
 
-# Install qpdf, optional
-sudo apt-get install qpdf 
+
 ```
 
 ## Known issues and solutions

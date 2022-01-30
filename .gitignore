@@ -1,1 +1,3 @@
-*.AppImage
+**/*.AppImage
+**/pdftomusicpro*/*
+**/musicxml/*
