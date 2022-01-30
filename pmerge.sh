@@ -1,28 +1,22 @@
 #!/bin/bash
 echo "
 ---------- { Notice } ----------
-
  _  _ _  _  _ _  _ 
 |_)| | |(/_| (_|(/_     
 |             _|   
 
 Please use this script for private use only, not commercial use.
-
-Dependencies - most are just for convenience and aren't necessary for basic functionality: 
-
-mxcat (written by me, included, required); MuseScore 3 (included in release, required); p2mp (PDFToMusic, pdftomusicpro-1.7.1d.0.run, included but must be executed, will add to usr bin automatically); pdftk (typically pre-installed)
-
 Usage: ./pmerge.sh \"path/to/myfile.pdf\"
  
 Debug mode: Edit the first line of this file to: #!/bin/bash -x . You can also disable cleanup by removing the last few lines of this script.
 --------------------------------
 "
-path=$1 # /path/to/stuff/abc.pdf
+path=$(readlink -f $1) # /path/to/stuff/abc.pdf # path=$1
 shelldir=$PWD
 file=$(basename "${path}") # abc.pdf
 dir=$(dirname "${path}") # /path/to/stuff/ 
 cd "$dir"
-mkdir musicxml
+mkdir -p musicxml
 echo "Directory $PWD"
 qpdf --decrypt "$file" "decrypted.pdf"
 pages=$(pdftk "decrypted.pdf" dump_data | grep NumberOfPages | sed 's/[^0-9]*//')

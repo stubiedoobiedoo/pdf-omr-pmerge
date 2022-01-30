@@ -23,12 +23,20 @@ Download from the release pane, and run `install.sh`:
 ```
 -->
 
-## Building from source
-Dependencies are provided, apart from `pdftk`. Optionally install `qpdf` if you are dealing with encrypted PDFs.
+## Installing
+Dependencies are provided, apart from `pdftk` and Musescore. Optionally install `qpdf` if you are dealing with encrypted PDFs.
 
+For Debian-based distros, you can use the install script:
 ```bash
 git clone "https://github.com/kaisubr/pdf-omr-pmerge.git"
-sudo apt-get install pdftk
+chmod +x install.sh
+./install.sh
+```
+
+Or install step by step according to your distribution:
+```bash
+git clone "https://github.com/kaisubr/pdf-omr-pmerge.git"
+sudo apt-get install pdftk # use distro-specific package manager
 sudo apt-get install qpdf # optional
 chmod +x pdftomusicpro-1.7.1d.0.run
 ./pdftomusicpro-1.7.1d.0.run
@@ -37,8 +45,12 @@ which p2mp
 # MuseScore
 wget -nc "https://github.com/musescore/MuseScore/releases/download/v3.4.2/MuseScore-3.4.2-x86_64.AppImage"
 chmod +x MuseScore-3.4.2-x86_64.AppImage
+```
 
-
+And then test it:
+```bash
+./pmerge.sh  media/original.pdf
+./MuseScore* media/result.mscx
 ```
 
 ## Known issues and solutions

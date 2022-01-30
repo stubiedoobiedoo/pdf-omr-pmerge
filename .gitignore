@@ -1,3 +1,7 @@
 **/*.AppImage
 **/pdftomusicpro*/*
 **/musicxml/*
+*.mid
+*.mscx
+*.mscz
+*.xml
