@@ -56,6 +56,9 @@ And then test it:
 ## Known issues and solutions
 * Password-protected PDFs:
      - They can be decrypted using qpdf. Edit the script to provide a password with `qpdf -password=<password> -decrypt input.pdf decrypted.pdf`
+* Tempo gets reset to default (80) on each page
+* Intermediate files should be marked .tmp or hidden
+* Compressed file should be result.mscz not result_compressed.mscz
 
 ## More stuff
 Please use this script for private use only, not commercial or third-party use, and follow licenses provided by authors of dependencies.
