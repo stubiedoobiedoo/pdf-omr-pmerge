@@ -6,7 +6,7 @@ echo "
 |             _|   
 
 Please use this script for private use only, not commercial use.
-Usage: conda activate velo && ./pmerge_m21.sh \"path/to/myfile.pdf\"
+Usage: ./pmerge.sh \"path/to/myfile.pdf\"
  
 Debug mode: Edit the first line of this file to: #!/bin/bash -x . You can also disable cleanup by removing the last few lines of this script.
 --------------------------------
@@ -28,6 +28,7 @@ for ((i = 1 ; i <= $pages ; i++)); do
     # Create MID file (https://www.myriad-online.com/resources/docs/pdftomusicpro/english/command.htm) and XML (Music XML) files
     # p2mp "out$i.pdf" -format MID -pathdest "$PWD" >> log.txt # $PWD is same as $dir
     p2mp "out$i.pdf" -format XML -pathdest "$PWD/musicxml/" >> log.txt
+    "$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$PWD/musicxml/out$i.mscx" "$PWD/musicxml/out$i.xml"
 done
 count=$((pages))
 
@@ -38,16 +39,16 @@ rm -rvf decrypted.pdf
 rm -rvf out*.mid
 rm -rvf log.txt
 
-# Combine xml files
+# Combine musescore's mscx files
 cd musicxml
-xmlarr=( $(printf 'out%d.xml\n' $(seq 1 $pages)) )
-python "$shelldir/mxcat_m21.py" -f "${xmlarr[@]}" -o "$dir/result.xml"
+mscxarr=( $(printf 'out%d.mscx\n' $(seq 1 $pages)) )
+python3 "$shelldir/mxcat_rests.py" "${mscxarr[@]}" > "$dir/result.mscx"
 
-# Convert final xml to a compressed format
-"$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result_compressed.mscz" "$dir/result.xml"
+# Convert final mscx to a compressed format
+"$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result.mscz" "$dir/result.mscx"
 
 # Generate high-quality MuseScore midi
-"$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result.mid" "$dir/result_compressed.mscz"
+"$shelldir/MuseScore-3.4.2-x86_64.AppImage" -o "$dir/result.mid" "$dir/result.mscx"
 
 echo "----------[ Cleanup mscore3 ]----------"
 # Cleanup individual mid, but must keep XML files!
